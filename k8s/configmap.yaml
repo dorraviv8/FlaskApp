@@ -1,0 +1,9 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: app-config
+data:
+  APP_NAME: "my-flask-app"
+  LOG_LEVEL: "info"
+  FLASK_PORT: "5000"
+  

@@ -1,0 +1,19 @@
+apiVersion: batch/v1
+kind: CronJob
+metadata:
+  name: ping-flask-cron
+spec:
+  schedule: "0 * * * *"
+  jobTemplate:
+    spec:
+      template:
+        spec:
+          restartPolicy: OnFailure
+          containers:
+            - name: curl
+              image: curlimages/curl:8.10.1
+              args:
+                - sh
+                - -c
+                - 'date -Is; curl -sS http://my-flask-app-svc:5000/ || true'
+
