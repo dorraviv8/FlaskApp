@@ -3,6 +3,8 @@
 This is a simple Python Flask application that returns a "Hello, World!" message when accessed.
 
 # Project Structure
+```text
+
 FlaskApp
 ├── app
 │   ├── app.py                        # Main Flask application
