@@ -45,10 +45,10 @@ cd FlaskApp/app
 2.Install dependencies:
    pip install -r requirements.txt
 
-2. Run the app:
+3. Run the app:
    python app.py
 
-3. Access the application:
+4. Access the application:
    Open http://localhost:5000 in your browser.
 
 # Run with Docker
