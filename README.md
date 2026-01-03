@@ -73,7 +73,7 @@ FlaskApp
 ├── Jenkinsfile                    # CI/CD pipeline definition
 └── README.md
 
-##Kubernetes Manifests (k8s/ directory)##
+## Kubernetes Manifests (k8s/ directory) ##
 
 The k8s directory contains raw Kubernetes YAML manifests created during the initial stage of the project.
 
