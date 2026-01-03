@@ -92,6 +92,38 @@ CronJob – Periodic internal health checks
 ⚠️ These manifests are kept for learning and documentation purposes.
 The production deployment is managed using Helm.
 
+## Helm Chart (helm/FlaskApp) ##
+
+The Helm chart represents the production-ready packaging of the application.
+
+Purpose of Helm:
+Parameterize Kubernetes manifests
+Enable repeatable deployments
+Simplify configuration changes without editing YAML files
+Integrate seamlessly with CI/CD pipelines
+Chart Components
+Chart.yaml
+
+Contains chart metadata such as:
+Chart name
+Version
+Application version
+values.yaml
+
+Defines configurable values, including:
+Docker image repository and tag
+Service type and ports
+Replica count
+Environment variables
+These values can be overridden during deployment or by CI/CD pipelines.
+
+templates/
+Contains templated Kubernetes manifests:
+deployment.yaml – Application deployment with configurable image and replicas
+service.yaml – Service definition (ClusterIP / NodePort)
+serviceaccount.yaml – ServiceAccount definition
+_helpers.tpl – Helper templates for consistent naming and labels
+tests/test-connection.yaml – Helm test pod to verify service connectivity
 _______________________________________________________________________
 
 ## Overview
