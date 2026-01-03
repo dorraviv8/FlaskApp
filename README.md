@@ -77,29 +77,22 @@ FlaskApp
 ## Kubernetes Manifests (k8s/ directory) ##
 
 The k8s directory contains raw Kubernetes YAML manifests created during the initial stage of the project.
-
 These files represent a manual approach to Kubernetes deployment and were used to:
-
 Learn Kubernetes resource definitions
-
 Understand relationships between Deployment, Service, HPA, ConfigMap and CronJob
-
 Validate application behavior before introducing Helm
 
 Included resources:
-
 Deployment – Defines application pods and replicas
-
 NodePort Service – Exposes the application externally
-
 HPA – Demonstrates autoscaling concepts
-
 ConfigMap – Externalized configuration
-
 CronJob – Periodic internal health checks
 
 ⚠️ These manifests are kept for learning and documentation purposes.
 The production deployment is managed using Helm.
+
+_______________________________________________________________________
 
 ## Overview
 
