@@ -32,6 +32,7 @@ Example `/health` response:
   "version": "0.1.0",
   "python_version": "3.11"
 }
+```
 The /health endpoint is used for:
 
 Kubernetes liveness/readiness probes
@@ -72,7 +73,7 @@ FlaskApp
 │
 ├── Jenkinsfile                    # CI/CD pipeline definition
 └── README.md
-
+```
 ## Kubernetes Manifests (k8s/ directory) ##
 
 The k8s directory contains raw Kubernetes YAML manifests created during the initial stage of the project.
