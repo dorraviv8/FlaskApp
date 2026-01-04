@@ -108,7 +108,7 @@ Integrate seamlessly with CI/CD pipelines
 
 Chart Components
 
-Chart.yaml
+### Chart.yaml ###
 
 Contains chart metadata such as:
 
@@ -118,7 +118,7 @@ Version
 
 Application version
 
-values.yaml
+### values.yaml ###
 
 Defines configurable values, including:
 
@@ -132,7 +132,7 @@ Environment variables
 
 These values can be overridden during deployment or by CI/CD pipelines.
 
-templates/
+### templates/ ###
 
 Contains templated Kubernetes manifests:
 
