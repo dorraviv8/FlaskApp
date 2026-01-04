@@ -97,24 +97,39 @@ The production deployment is managed using Helm.
 The Helm chart represents the production-ready packaging of the application.
 
 Purpose of Helm:
+
 Parameterize Kubernetes manifests
+
 Enable repeatable deployments
+
 Simplify configuration changes without editing YAML files
+
 Integrate seamlessly with CI/CD pipelines
+
 Chart Components
+
 Chart.yaml
 
 Contains chart metadata such as:
+
 Chart name
+
 Version
+
 Application version
+
 values.yaml
 
 Defines configurable values, including:
+
 Docker image repository and tag
+
 Service type and ports
+
 Replica count
+
 Environment variables
+
 These values can be overridden during deployment or by CI/CD pipelines.
 
 templates/
