@@ -118,11 +118,17 @@ Environment variables
 These values can be overridden during deployment or by CI/CD pipelines.
 
 templates/
+
 Contains templated Kubernetes manifests:
+
 deployment.yaml – Application deployment with configurable image and replicas
+
 service.yaml – Service definition (ClusterIP / NodePort)
+
 serviceaccount.yaml – ServiceAccount definition
+
 _helpers.tpl – Helper templates for consistent naming and labels
+
 tests/test-connection.yaml – Helm test pod to verify service connectivity
 
 ## Local Development ##
@@ -153,24 +159,37 @@ minikube service -n flaskapp flaskapp --url
 ## CI/CD Pipeline (Jenkins) ##
 
 The project includes a Jenkins pipeline defined in Jenkinsfile implementing:
+
 Build – Docker image build with versioned tags
+
 Test – Smoke test using /health endpoint
+
 Push – Image push to Docker Hub
+
 Deploy – Automated deployment using Helm
+
 Each pipeline run deploys a new version of the application to Kubernetes.
 
 ## Git Workflow ##
 
 Development is performed on feature branches
+
 Changes are merged into main
+
 Git history demonstrates branching, merging and conflict resolution
 
 ## Technologies Used: ##
 
 Python 3.11
+
 Flask 3.0
+
 Docker
+
 Kubernetes
+
 Helm
+
 Jenkins
+
 Git / GitHub
