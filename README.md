@@ -125,7 +125,7 @@ serviceaccount.yaml – ServiceAccount definition
 _helpers.tpl – Helper templates for consistent naming and labels
 tests/test-connection.yaml – Helm test pod to verify service connectivity
 
-Local Development
+## Local Development ##
 Run with Python (virtual environment)
 
 ```sh
@@ -134,13 +134,13 @@ source .venv/bin/activate
 pip install -r app/requirements.txt
 python app/app.py
 ```
-Run with Docker
+## Run with Docker ##
 ```sh
 docker build -t dorraviv/my-flask-app:local -f app/Dockerfile app
 docker run -p 5000:5000 dorraviv/my-flask-app:local
 ```
 
-Kubernetes Deployment with Helm
+## Kubernetes Deployment with Helm ##
 ```sh
 helm upgrade --install flaskapp helm/FlaskApp \
   -n flaskapp --create-namespace
@@ -150,7 +150,7 @@ Access service using Minikube:
 minikube service -n flaskapp flaskapp --url
 ```
 
-CI/CD Pipeline (Jenkins)
+## CI/CD Pipeline (Jenkins) ##
 
 The project includes a Jenkins pipeline defined in Jenkinsfile implementing:
 Build – Docker image build with versioned tags
@@ -159,13 +159,13 @@ Push – Image push to Docker Hub
 Deploy – Automated deployment using Helm
 Each pipeline run deploys a new version of the application to Kubernetes.
 
-Git Workflow
+## Git Workflow ##
 
 Development is performed on feature branches
 Changes are merged into main
 Git history demonstrates branching, merging and conflict resolution
 
-Technologies Used:
+## Technologies Used: ##
 
 Python 3.11
 Flask 3.0
