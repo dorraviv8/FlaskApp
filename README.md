@@ -85,10 +85,15 @@ Learn Kubernetes resource definitions,Understand relationships between Deploymen
 Validate application behavior before introducing Helm
 
 Included resources:
+
 Deployment – Defines application pods and replicas
+
 NodePort Service – Exposes the application externally
+
 HPA – Demonstrates autoscaling concepts
+
 ConfigMap – Externalized configuration
+
 CronJob – Periodic internal health checks
 
 ⚠️ These manifests are kept for learning and documentation purposes.
