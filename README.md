@@ -125,14 +125,8 @@ serviceaccount.yaml – ServiceAccount definition
 _helpers.tpl – Helper templates for consistent naming and labels
 tests/test-connection.yaml – Helm test pod to verify service connectivity
 _______________________________________________________________________
+*************************************************************
 
-## Overview
-
-This project is a simple Flask-based web application.
-
-The repository includes:
-- Kubernetes manifests for deployment, service, autoscaling (HPA),
-  configuration (ConfigMap), and a periodic health-check CronJob.
 
 ## Prerequisites
 
