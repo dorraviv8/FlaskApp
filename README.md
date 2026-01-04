@@ -84,7 +84,7 @@ Learn Kubernetes resource definitions,Understand relationships between Deploymen
 
 Validate application behavior before introducing Helm
 
-Included resources:
+### Included resources: ###
 
 Deployment – Defines application pods and replicas
 
