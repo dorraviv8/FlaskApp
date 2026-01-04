@@ -124,77 +124,53 @@ service.yaml – Service definition (ClusterIP / NodePort)
 serviceaccount.yaml – ServiceAccount definition
 _helpers.tpl – Helper templates for consistent naming and labels
 tests/test-connection.yaml – Helm test pod to verify service connectivity
-_______________________________________________________________________
-*************************************************************
 
+Local Development
+Run with Python (virtual environment)
 
-## Prerequisites
+```sh
+python3 -m venv .venv
+source .venv/bin/activate
+pip install -r app/requirements.txt
+python app/app.py
+```
+Run with Docker
+```sh
+docker build -t dorraviv/my-flask-app:local -f app/Dockerfile app
+docker run -p 5000:5000 dorraviv/my-flask-app:local
+```
 
-- Python 3.10+
-- Docker and Docker Compose installed
-- A running Kubernetes cluster (local `minikube` or any other cluster)
-- `kubectl` configured to talk to your cluster
-- Metrics server installed in the cluster (required for HPA)
+Kubernetes Deployment with Helm
+```sh
+helm upgrade --install flaskapp helm/FlaskApp \
+  -n flaskapp --create-namespace
+```
+Access service using Minikube:
+```sh
+minikube service -n flaskapp flaskapp --url
+```
 
-# How to Run Locally (Without Docker)
-1.Navigate to the application folder:
+CI/CD Pipeline (Jenkins)
 
-```bash
-cd FlaskApp/app
+The project includes a Jenkins pipeline defined in Jenkinsfile implementing:
+Build – Docker image build with versioned tags
+Test – Smoke test using /health endpoint
+Push – Image push to Docker Hub
+Deploy – Automated deployment using Helm
+Each pipeline run deploys a new version of the application to Kubernetes.
 
-2.Install dependencies:
-   pip install -r requirements.txt
+Git Workflow
 
-3. Run the app:
-   python app.py
+Development is performed on feature branches
+Changes are merged into main
+Git history demonstrates branching, merging and conflict resolution
 
-4. Access the application:
-   Open http://localhost:5000 in your browser.
+Technologies Used:
 
-# Run with Docker
-1. Build and run using Docker Compose:
-   docker build -t flask-app:latest .
-
-2.Run the container
-  docker run -p 5000:5000 flask-app:latest
-
-3. Access the app:
-   Visit http://localhost:5000
-
-#Running with Docker Compose:
-1. From the app directory:
-   docker compose up --build
-
-2. open http://localhost:5000
-
-
-#Kubernetes
-The k8s folder includes basic manifest files for practicing:
-
-- Deployment
-- NodePort Service
-- Horizontal Pod Autoscaler (hpa)
-- ConfigMap
-- CronJob
-
-To apply all resources:
-
-cd FlaskApp/k8s
-kubectl apply -f .
-
-# Technologies Used
-- Python 3.11
-- Flask 3.0
-- Docker
-- Docker Compose
-- Kubernetes
-
-# Notes
-- Default port: 5000
-- The Flask app runs automatically on container startup.
-- To stop the container:
-  docker compose down
-
-# Example Output
-Hello, World!
-
+Python 3.11
+Flask 3.0
+Docker
+Kubernetes
+Helm
+Jenkins
+Git / GitHub
