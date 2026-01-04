@@ -96,7 +96,7 @@ The production deployment is managed using Helm.
 
 The Helm chart represents the production-ready packaging of the application.
 
-Purpose of Helm:
+### Purpose of Helm: ###
 
 Parameterize Kubernetes manifests
 
