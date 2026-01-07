@@ -177,6 +177,102 @@ Access service using Minikube:
 ```sh
 minikube service -n flaskapp flaskapp --url
 ```
+CI/CD Pipeline (Jenkins + GitHub Webhook)
+
+The project includes a fully automated CI/CD pipeline implemented using Jenkins.
+The pipeline is defined declaratively in the Jenkinsfile located at the root of the repository.
+
+The pipeline covers the full lifecycle of the application:
+build → test → package → deploy → verify.
+
+Pipeline Stages
+1. Source Checkout
+
+Jenkins pulls the latest code from the Git repository.
+
+The pipeline always runs against the main branch.
+
+2. Pre-checks (Validation)
+
+Python syntax validation using py_compile to catch errors early.
+
+Helm validation using:
+
+helm lint – validates chart structure and best practices
+
+helm template – renders Kubernetes manifests to ensure they are syntactically correct
+
+These checks prevent invalid code or Helm charts from progressing further in the pipeline.
+
+3. Build Docker Image
+
+A Docker image is built using the application Dockerfile.
+
+The image is tagged with:
+
+The Jenkins build number (immutable version)
+
+latest (convenience tag)
+
+4. Container Tests (Smoke & Health Checks)
+
+The container is started locally by Jenkins.
+
+The pipeline validates:
+
+/ endpoint returns the expected response
+
+/health endpoint responds successfully
+
+/health returns valid JSON containing required fields:
+
+status
+
+uptime_seconds
+
+hostname
+
+environment
+
+version
+
+python_version
+
+This ensures the container is functional before pushing it to the registry.
+
+5. Push Image to Docker Hub
+
+Jenkins authenticates to Docker Hub using stored credentials.
+
+Both the versioned image and latest tag are pushed to the registry.
+
+6. Deploy to Kubernetes (Helm)
+
+Jenkins deploys the application using Helm:
+
+helm upgrade --install
+
+The Docker image tag is injected dynamically using the Jenkins build number.
+
+Jenkins waits for the Kubernetes rollout to complete successfully.
+
+7. Post-deployment Validation
+
+Jenkins performs a runtime validation after deployment.
+
+Using port-forwarding, Jenkins verifies the /health endpoint of the running Kubernetes service.
+
+This confirms that the application is healthy inside the cluster, not just locally.
+
+Automatic Pipeline Trigger with GitHub Webhook
+
+The Jenkins pipeline is triggered automatically on every git push using a GitHub Webhook.
+
+Since Jenkins runs locally, ngrok is used to expose Jenkins to the internet.
+
+Jenkins listens for GitHub webhook events at:
+
+₪₪₪₪₪₪₪₪₪₪₪₪₪₪₪₪₪₪₪₪₪₪₪₪₪₪₪₪₪₪₪₪₪₪₪₪₪₪₪₪₪₪₪₪₪₪₪₪₪₪₪₪₪₪₪₪₪₪
 
 ## CI/CD Pipeline (Jenkins) ##
 
@@ -199,6 +295,8 @@ Development is performed on feature branches
 Changes are merged into main
 
 Git history demonstrates branching, merging and conflict resolution
+₪₪₪₪₪₪₪₪₪₪₪₪₪₪₪₪₪₪₪₪₪₪₪₪₪₪₪₪₪₪₪₪₪₪₪₪₪₪₪₪₪₪₪₪₪₪₪₪₪₪₪
+
 
 ## Technologies Used: ##
 
