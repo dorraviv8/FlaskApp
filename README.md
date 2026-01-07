@@ -1,6 +1,6 @@
 # Flask DevOps Project – Final Course Project
 
-This repository contains a Flask-based application developed as a **final project for a DevOps course**.
+This repository contains a Flask-based Application developed as a **final project for a DevOps course**.
 
 The main goal of the project is to demonstrate **end-to-end DevOps practices**, including:
 - Application containerization
