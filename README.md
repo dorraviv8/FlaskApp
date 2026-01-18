@@ -1,4 +1,4 @@
-# Flask DevOps Project – Final Course Project
+# Flask DevOps Project – Final Course Project!
 
 This repository contains a Flask-based Application developed as a **final project for a DevOps course**.
 
